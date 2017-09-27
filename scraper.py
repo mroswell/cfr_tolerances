@@ -6,6 +6,9 @@ import lxml.html
 
 # Read in a page
 html = scraperwiki.scrape("https://www.law.cornell.edu/cfr/text/40/part-180/subpart-C")
+# We'll build a second scraper for: 
+# https://www.ecfr.gov/cgi-bin/retrieveECFR?gp=1&SID=0d522d57c79aa7c6bd629bce51d61a7f&h=L&mc=true&n=pt40.26.180&r=PART&ty=HTML
+# and compare
 
 # Find something on the page using css selectors
 root = lxml.html.fromstring(html)
