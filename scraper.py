@@ -12,7 +12,7 @@ html = scraperwiki.scrape("https://www.law.cornell.edu/cfr/text/40/part-180/subp
 
 # Find something on the page using css selectors
 root = lxml.html.fromstring(html)
-lis = root.cssselect("li.a")
+lis = root.cssselect("li a")
 
 for li in lis:
     # record = {"li" : li.text}
