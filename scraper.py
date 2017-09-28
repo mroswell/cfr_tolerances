@@ -23,7 +23,7 @@ for link in cfr_links:
     href= link.attrib['href']
     title = link.attrib['title'].encode('utf-8')
     title_array = re.split(r'\s{4,}', title)
-    print href + ',' + title_array
+    print href + ',' + title_array[1]
   
 # Write out to the sqlite database using scraperwiki library
 #scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
