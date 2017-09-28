@@ -16,8 +16,7 @@ root = lxml.html.fromstring(html)
 cfr_links = root.cssselect("li.tocitem a")
 
 for link in cfr_links:
-    # record = {"li" : li.text}
-   #  scraperwiki.sqlite.save(unique_keys=['link'], data=record)
+
     # print li.text.encode('utf-8', 'ignore').decode('utf-8')
     #print lxml.html.tostring(link)
     href= link.attrib['href']
@@ -25,7 +24,9 @@ for link in cfr_links:
     title_array = re.split(r'\s{2,}', title)
     title_array1 = re.split(r'; ',title_array[1])
     print href + ',' + title_array1[0]
-  
+    record = {"link" : href, "analyte" : title_array1[0]}
+    scraperwiki.sqlite.save(unique_keys=['link','analyte'], data=record)
+
 # Write out to the sqlite database using scraperwiki library
 #scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
 
