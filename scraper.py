@@ -16,7 +16,7 @@ lis = root.cssselect("li")
 
 for li in lis:
   record = {"li" : li.text}
-  scraperwiki.sqlite.save(["li"], record)
+  scraperwiki.sqlite.save(unique_keys=['li'], data=record)
 
   
 # Write out to the sqlite database using scraperwiki library
