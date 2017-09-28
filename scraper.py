@@ -13,15 +13,17 @@ html = scraperwiki.scrape("https://www.law.cornell.edu/cfr/text/40/part-180/subp
 # Find something on the page using css selectors
 root = lxml.html.fromstring(html)
 lis = root.cssselect("li")
-for li in lis:
-  print lxml.html.tostring(li)
-  print li.text
 
+for li in lis:
+  record = {"li" : li.text}
+  scraperwiki.sqlite.save(["li"], record)
+
+  
 # Write out to the sqlite database using scraperwiki library
-scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
+#scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
 
 # An arbitrary query against the database
-scraperwiki.sql.select("* from data where 'name'='peter'")
+# scraperwiki.sql.select("* from data where 'name'='peter'")
 
 # You don't have to do things with the ScraperWiki and lxml libraries.
 # You can use whatever libraries you want: https://morph.io/documentation/python
