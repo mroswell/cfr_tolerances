@@ -15,9 +15,9 @@ root = lxml.html.fromstring(html)
 lis = root.cssselect("li")
 
 for li in lis:
-  record = {"li" : li.text}
-  scraperwiki.sqlite.save(unique_keys=['li'], data=record)
-
+   # record = {"li" : li.text}
+   #  scraperwiki.sqlite.save(unique_keys=['li'], data=record)
+    print li.text
   
 # Write out to the sqlite database using scraperwiki library
 #scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
