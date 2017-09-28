@@ -3,6 +3,7 @@
 
 import scraperwiki
 import lxml.html
+import re
 
 # Read in a page
 html = scraperwiki.scrape("https://www.law.cornell.edu/cfr/text/40/part-180/subpart-C")
@@ -21,7 +22,8 @@ for link in cfr_links:
     #print lxml.html.tostring(link)
     href= link.attrib['href']
     title = link.attrib['title'].encode('utf-8')
-    print href + ',' + title
+    title_array = re.split(r'\s{4,}', title)
+    print href + ',' + title_array
   
 # Write out to the sqlite database using scraperwiki library
 #scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
