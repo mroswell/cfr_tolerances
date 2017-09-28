@@ -12,7 +12,8 @@ html = scraperwiki.scrape("https://www.law.cornell.edu/cfr/text/40/part-180/subp
 
 # Find something on the page using css selectors
 root = lxml.html.fromstring(html)
-root.cssselect("div[align='left']")
+lis = root.cssselect("li")
+print lis
 
 # Write out to the sqlite database using scraperwiki library
 scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
