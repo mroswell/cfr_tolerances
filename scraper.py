@@ -22,7 +22,7 @@ for link in cfr_links:
     #print lxml.html.tostring(link)
     href= link.attrib['href']
     title = link.attrib['title'].encode('utf-8')
-    title_array = re.split(r'\s{4,}', title)
+    title_array = re.split(r'\s{2,}', title)
     print href + ',' + title_array[1]
   
 # Write out to the sqlite database using scraperwiki library
