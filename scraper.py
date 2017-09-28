@@ -19,7 +19,9 @@ for link in cfr_links:
    #  scraperwiki.sqlite.save(unique_keys=['link'], data=record)
     # print li.text.encode('utf-8', 'ignore').decode('utf-8')
     #print lxml.html.tostring(link)
-    print link.attrib['href']+',' + link.attrib['title'].encode('utf-8')
+    href= link.attrib['href']
+    title = link.attrib['title'].encode('utf-8')
+    print href + ',' + title
   
 # Write out to the sqlite database using scraperwiki library
 #scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
