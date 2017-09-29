@@ -16,8 +16,9 @@ html = scraperwiki.scrape("https://www.law.cornell.edu/cfr/text/40/part-180/subp
 root = lxml.html.fromstring(html)
 cfr_links = root.cssselect("li.tocitem a")
 
+arr = []
+
 for link in cfr_links:
-    arr = []
     href= link.attrib['href']
     title = link.attrib['title'].encode('utf-8')
     title_array = re.split(r'\s{2,}', title)
