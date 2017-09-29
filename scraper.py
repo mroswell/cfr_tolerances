@@ -24,10 +24,12 @@ for link in cfr_links:
     title_array = re.split(r'\s{2,}', title)
     title_array1 = re.split(r'; ',title_array[1])
     # print href + ',' + title_array1[0]
+    html1 = scraperwiki.scrape(url_base+href)
     record = {"link" : href, "analyte" : title_array1[0]}
     arr.append(record)
     # scraperwiki.sqlite.save(unique_keys=['link','analyte'], data=record)
-    print arr
+    
+print html1
 
 # Write out to the sqlite database using scraperwiki library
 #scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
