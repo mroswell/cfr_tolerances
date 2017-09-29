@@ -24,7 +24,7 @@ for link in cfr_links:
     title_array1 = re.split(r'; ',title_array[1])
     # print href + ',' + title_array1[0]
     record = {"link" : href, "analyte" : title_array1[0]}
-    arr.push(record)
+    arr.append(record)
     # scraperwiki.sqlite.save(unique_keys=['link','analyte'], data=record)
     print arr
 
