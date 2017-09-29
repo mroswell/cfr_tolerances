@@ -6,6 +6,7 @@ import lxml.html
 import re
 
 # Read in a page
+url_base= 'https://www.law.cornell.edu'
 html = scraperwiki.scrape("https://www.law.cornell.edu/cfr/text/40/part-180/subpart-C")
 # We'll build a second scraper for: 
 # https://www.ecfr.gov/cgi-bin/retrieveECFR?gp=1&SID=0d522d57c79aa7c6bd629bce51d61a7f&h=L&mc=true&n=pt40.26.180&r=PART&ty=HTML
@@ -16,16 +17,16 @@ root = lxml.html.fromstring(html)
 cfr_links = root.cssselect("li.tocitem a")
 
 for link in cfr_links:
-
-    # print li.text.encode('utf-8', 'ignore').decode('utf-8')
-    #print lxml.html.tostring(link)
+    arr = []
     href= link.attrib['href']
     title = link.attrib['title'].encode('utf-8')
     title_array = re.split(r'\s{2,}', title)
     title_array1 = re.split(r'; ',title_array[1])
-    print href + ',' + title_array1[0]
+    # print href + ',' + title_array1[0]
     record = {"link" : href, "analyte" : title_array1[0]}
-    scraperwiki.sqlite.save(unique_keys=['link','analyte'], data=record)
+    arr.push(record)
+    # scraperwiki.sqlite.save(unique_keys=['link','analyte'], data=record)
+    print arr
 
 # Write out to the sqlite database using scraperwiki library
 #scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
