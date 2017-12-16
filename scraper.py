@@ -6,6 +6,8 @@ import re
 import csv
 
 target_commodities = ["Poultry, fat","Poultry, meat", "Poultry, meat byproducts", "Hog, fat","Hog, meat", "Hog, meat byproducts", "Cattle, fat","Cattle, meat", "Cattle, meat byproducts", "Egg", "Milk, fat"]
+target_commodities = ["Poultry, fat","Poultry, kidney", "Poultry, meat", "Poultry, meat byproducts", "Hog, fat", "Hog, kidney", "Hog, liver", "Hog, meat", "Hog, muscle", "Hog, meat byproducts", "Cattle, fat", "Cattle, kidney", "Cattle, liver", "Cattle, meat", "Cattle, muscle", "Cattle, meat byproducts", "Egg", "Milk, fat"]
+
 url_base= 'https://www.ecfr.gov/cgi-bin/retrieveECFR?gp=1&SID=0d522d57c79aa7c6bd629bce51d61a7f&h=L&mc=true&n=pt40.26.180&r=PART&ty=HTML'
 html = scraperwiki.scrape(url_base)
 rt = lxml.html.fromstring(html)
